@@ -24,16 +24,17 @@ def write_csv(data):
 
 def get_data(html):
   s = BeautifulSoup(html, 'lxml')
-  trs = s.find_all("ul", class_="gnm")
-  for tr in trs:
-    name1 = tr.find('a').text
-    url = tr.find('a').get('href')
-    
-    print(name1)
-    # print(url)
-    
-  return tr
+  uroven1 = s.find_all("ul", class_="gnm")
+  for ul in uroven1:
+    name1 = ul.find('a').text     # url = ul.find('a').get('href')
+    uroven2 = ul.find_all('li')
+    # print(len(uroven2))
+    for li in uroven2:
+      name2 = li.find('a').text
+      print(f"  {name2}")
+    print(name1) # print(url)  
 
+  return uroven1
 
 def main():
     # Начальный URL
